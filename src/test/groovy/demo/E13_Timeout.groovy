@@ -10,7 +10,7 @@ class E13_Timeout extends Specification {
     @Timeout(value = 500, unit = TimeUnit.MILLISECONDS)
     void 'should fail after 500 milliseconds'() {
         given:
-            Thread.sleep 500
+            Thread.sleep 501
 
         expect:
             true

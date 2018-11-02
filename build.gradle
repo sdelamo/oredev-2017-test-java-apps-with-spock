@@ -5,8 +5,7 @@ repositories {
 }
 
 dependencies {
-    testCompile 'org.codehaus.groovy:groovy-all:2.4.12'
-    testCompile 'org.spockframework:spock-core:1.1-groovy-2.4'
+    testCompile 'org.spockframework:spock-core:1.2-groovy-2.5'
 
     testCompile 'org.slf4j:slf4j-nop:1.7.25' // Because slf4j complains if no implementation is on the classpath
 

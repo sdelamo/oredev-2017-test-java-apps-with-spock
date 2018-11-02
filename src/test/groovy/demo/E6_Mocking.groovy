@@ -6,58 +6,58 @@ class E6_Mocking extends Specification {
 
     void 'should send a notification when the someone registers'() {
         given:
-            def mockedNotificationService = Mock(NotificationService)
-            def userService = new UserService(mockedNotificationService)
+        def mockedNotificationService = Mock(NotificationService)
+        def userService = new UserService(mockedNotificationService)
 
         when:
-            userService.createUser('Iván', 'López')
+        userService.createUser('Iván', 'López')
 
         then:
-            1 * mockedNotificationService.sendNotification(_, 'User created')
+        1 * mockedNotificationService.sendNotification(_, 'User created')
     }
 
     void 'should check constraints on interactions'() {
         given:
-            def mockedNotificationService = Mock(NotificationService)
-            def userService = new UserService(mockedNotificationService)
+        def mockedNotificationService = Mock(NotificationService)
+        def userService = new UserService(mockedNotificationService)
 
         when:
-            userService.createUser('Iván', 'López')
+        userService.createUser('Iván', 'López')
 
         then:
-            1 * mockedNotificationService.sendNotification({it.name == 'Iván'}, 'User created')
+        1 * mockedNotificationService.sendNotification({it.name == 'Iván'}, 'User created')
     }
 
     void 'should mock an implementation'() {
         given:
-            def user = new User('Iván', 'López')
-            def mockedEmailService = Mock(EmailService)
+        def user = new User('Iván', 'López')
+        def mockedEmailService = Mock(EmailService)
 
         when:
-            mockedEmailService.sendEmail(user, 'How are you?')
+        mockedEmailService.sendEmail(user, 'How are you?')
 
         then:
-            1 * mockedEmailService.sendEmail(user, 'How are you?')
+        1 * mockedEmailService.sendEmail(user, 'How are you?')
     }
 
     void 'should check the order'() {
         given:
-            def user = new User('Iván', 'López')
-            def mockedNotificationService = Mock(NotificationService)
+        def user = new User('Iván', 'López')
+        def mockedNotificationService = Mock(NotificationService)
 
         when:
-            mockedNotificationService.sendNotification(user, 'msg1')
-            mockedNotificationService.sendNotification(user, 'msg2')
-            mockedNotificationService.sendNotification(user, 'msg3')
+        mockedNotificationService.sendNotification(user, 'msg1')
+        mockedNotificationService.sendNotification(user, 'msg2')
+        mockedNotificationService.sendNotification(user, 'msg3')
 
         then:
-            1 * mockedNotificationService.sendNotification(user, 'msg1')
+        1 * mockedNotificationService.sendNotification(user, 'msg1')
 
         then:
-            1 * mockedNotificationService.sendNotification(user, 'msg2')
+        1 * mockedNotificationService.sendNotification(user, 'msg2')
 
         then:
-            1 * mockedNotificationService.sendNotification(user, 'msg3')
+        1 * mockedNotificationService.sendNotification(user, 'msg3')
     }
 
 }

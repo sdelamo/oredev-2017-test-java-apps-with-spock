@@ -23,14 +23,14 @@ class E3_PowerAsserts extends Specification {
         data.childs.name.first() == 'Adriana'
     }
 
-    void 'careful with loop assertions'() {
+    void 'careful with loop assertions, not asserting anything'() {
         expect:
         for (String fruit : ['apple', 'orange', 'straweberry'] ) {
             fruit.startsWith('a')
         }
     }
 
-    void 'replace loop assertions with every and any'() {
+    void 'shoudl fail with every'() {
         expect:
         ['apple', 'orange', 'straweberry'].every { String fruit -> fruit.startsWith('a') }
     }

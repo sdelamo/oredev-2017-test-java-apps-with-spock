@@ -10,12 +10,12 @@ class E10_Shared extends Specification {
 
     void 'should print user'() {
         expect:
-            println user
+        println user
     }
 
     void 'should println user (II)'() {
         expect:
-            println user
+        println user
     }
 
 }

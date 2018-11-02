@@ -13,35 +13,34 @@ class E12_Requires_IgnoreIf extends Specification {
     @Requires({ OperatingSystem.current.linux })
     void 'should only run on Linux'() {
         expect:
-            true
+        true
     }
 
     @Requires({ OperatingSystem.current.windows })
     void 'should only run on Windows'() {
         expect:
-            false
+        false
     }
 
     @IgnoreIf({ Jvm.current.java8Compatible })
     void 'should be ignored in Java8+'() {
         expect:
-            false
+        false
     }
 
     @IgnoreIf({ Jvm.current.java9 })
     void 'should be ignored only in Java9'() {
         expect:
-            true
+        true
     }
 
     @Requires({ isAmazingConference('øredev')})
     void 'should run for amazing conferences'() {
         expect:
-            true
+        true
     }
 
     static boolean isAmazingConference(String conference) {
         conference in ['øredev', 'Greach']
     }
-
 }

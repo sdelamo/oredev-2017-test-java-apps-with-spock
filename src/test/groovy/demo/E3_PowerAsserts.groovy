@@ -30,7 +30,7 @@ class E3_PowerAsserts extends Specification {
         }
     }
 
-    void 'shoudl fail with every'() {
+    void 'should fail with every'() {
         expect:
         ['apple', 'orange', 'straweberry'].every { String fruit -> fruit.startsWith('a') }
     }
@@ -51,5 +51,3 @@ class E3_PowerAsserts extends Specification {
     }
 
 }
-
-
